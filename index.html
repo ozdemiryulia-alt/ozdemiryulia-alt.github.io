@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Расписание приёма и мероприятий в Москве · Юлия ОздеМир</title>
+<meta name="description" content="Расписание очного и дистанционного приёма, игр и семинара Юлии ОздеМир в Москве, сентябрь–октябрь.">
+<link rel="canonical" href="https://ozdemiryulia-alt.github.io/raspisanie/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Расписание приёма и мероприятий в Москве · Юлия ОздеМир">
+<meta property="og:description" content="Расписание очного и дистанционного приёма, игр и семинара Юлии ОздеМир в Москве, сентябрь–октябрь.">
+<meta property="og:url" content="https://ozdemiryulia-alt.github.io/raspisanie/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --water-000:#FAFDFD; --water-050:#F1F7F7; --water-100:#E4EFEF; --water-200:#CFE3E3;
+  --water-300:#B0D0D1; --water-500:#6FA9AC; --water-700:#33787E; --water-800:#1F5F66; --water-900:#14454B;
+  --ink-900:#0F2A2E; --ink-700:#234A50; --ink-500:#4E7175; --ink-300:#8FA9AB;
+  --air-000:#FFFFFF; --air-050:#FCFBF8; --air-100:#F6F3EC; --air-200:#EDE8DE; --air-300:#DED8CA;
+  --sand-100:#F5EADA; --sand-200:#EBDDC8; --sand-400:#D8BE9B; --sand-600:#B08E63; --sand-800:#6E5539;
+
+  --surface-page:var(--water-050);
+  --surface-card:rgba(255,255,255,.72);
+  --surface-card-border:rgba(20,69,75,.10);
+  --text-title:var(--ink-900);
+  --text-body:rgba(15,42,46,.74);
+  --text-muted:rgba(15,42,46,.50);
+  --line-hairline:rgba(20,69,75,.14);
+  --accent:var(--sand-600);
+
+  --font-display:"Prata","Times New Roman",serif;
+  --font-sans:"Manrope","Helvetica Neue",Arial,sans-serif;
+
+  --radius-1:3px; --radius-2:8px; --radius-soft:24px;
+  --maxw:820px;
+  --shadow-soft:0 20px 50px -30px rgba(15,42,46,.20);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--surface-page);
+  color:var(--text-title);
+  font-family:var(--font-sans);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-family:var(--font-sans);font-weight:700;font-size:12px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--sand-600);
+}
+h1,h2{font-family:var(--font-display);font-weight:400;color:var(--text-title);margin:0}
+
+/* hero */
+.hero{padding:88px 0 48px;text-align:center}
+.hero .eyebrow{margin-bottom:18px}
+.hero h1{font-size:40px;line-height:1.18;margin-bottom:10px}
+.hero .sub{font-size:19px;color:var(--text-body);margin-bottom:22px}
+.hero .range{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--air-050);border:1px solid var(--line-hairline);
+  border-radius:999px;padding:10px 22px;font-size:15px;color:var(--ink-700);
+}
+
+/* month heading */
+.month{margin:56px 0 20px}
+.month h2{font-size:26px}
+
+/* day row */
+.day-row{
+  display:grid;grid-template-columns:150px 1fr;gap:18px;
+  background:var(--surface-card);border:1px solid var(--surface-card-border);
+  border-radius:var(--radius-soft);padding:18px 22px;margin-bottom:10px;
+  box-shadow:var(--shadow-soft);
+}
+.day-date{display:flex;flex-direction:column;justify-content:center}
+.date-num{font-family:var(--font-display);font-size:20px;color:var(--text-title)}
+.date-week{font-size:13px;color:var(--text-muted);text-transform:capitalize}
+.day-body{display:flex;flex-direction:column;gap:10px;justify-content:center}
+.tag{
+  align-self:flex-start;font-size:12px;font-weight:600;letter-spacing:.02em;
+  padding:5px 12px;border-radius:999px;
+}
+.tag-both{background:var(--water-100);color:var(--water-800)}
+.tag-remote{background:var(--sand-100);color:var(--sand-800)}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slot{
+  font-size:14px;font-weight:600;color:var(--ink-900);
+  background:var(--air-000);border:1px solid var(--line-hairline);
+  border-radius:var(--radius-1);padding:5px 11px;
+}
+.slot-booked{
+  color:var(--text-muted);text-decoration:line-through;
+  background:var(--air-100);border-color:var(--surface-card-border);
+}
+.event-note{font-size:14px;color:var(--sand-600);font-weight:600}
+.event-note-big{font-size:19px;font-family:var(--font-display);color:var(--ink-900);font-weight:400}
+
+.day-special{
+  background:linear-gradient(135deg,var(--sand-100),var(--water-100));
+  align-items:center;
+}
+.day-special .date-num{font-size:18px}
+
+/* footer */
+.footer{margin:64px 0 40px;text-align:center}
+.footer .note{font-size:15px;color:var(--text-body);margin-bottom:26px}
+.btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--ink-900);color:var(--air-050);
+  font-family:var(--font-sans);font-weight:600;font-size:15px;
+  padding:14px 28px;border-radius:999px;text-decoration:none;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-soft)}
+.btn-secondary{background:transparent;color:var(--ink-900);border:1px solid var(--line-hairline)}
+.legend{
+  display:flex;gap:20px;justify-content:center;flex-wrap:wrap;
+  font-size:13px;color:var(--text-muted);margin:18px 0 0;
+}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend .dot{width:10px;height:10px;border-radius:50%}
+.dot-open{background:var(--water-700)}
+.dot-booked{background:var(--ink-300)}
+
+@media(max-width:600px){
+  .hero h1{font-size:30px}
+  .day-row{grid-template-columns:1fr;gap:8px}
+  .day-date{flex-direction:row;align-items:baseline;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Юлия ОздеМир</div>
+    <h1>Расписание приёма<br>и мероприятий в Москве</h1>
+    <div class="sub">Очные и дистанционные сеансы, игры, семинар</div>
+    <div class="range">16 сентября — 29 октября</div>
+    <div class="legend">
+      <span><span class="dot dot-open"></span>время свободно</span>
+      <span><span class="dot dot-booked"></span>время занято</span>
+    </div>
+  </div>
+
+  <div class="month">
+    <div class="eyebrow">2026</div>
+    <h2>Сентябрь</h2>
+  </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">16 сентября</span>
+          <span class="date-week">среда</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot slot-booked">11:00</span><span class="slot slot-booked">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">17 сентября</span>
+          <span class="date-week">четверг</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot slot-booked">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">18 сентября</span>
+          <span class="date-week">пятница</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-remote">только дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          <div class="event-note">Дистанционные сеансы и онлайн-игры</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">19 сентября</span>
+          <span class="date-week">суббота</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-remote">только дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          <div class="event-note">Дистанционные сеансы и онлайн-игры</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">20 сентября</span>
+          <span class="date-week">воскресенье</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-remote">только дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          <div class="event-note">Дистанционные сеансы и онлайн-игры</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">21 сентября</span>
+          <span class="date-week">понедельник</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-remote">только дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          <div class="event-note">Дистанционные сеансы и онлайн-игры</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">23 сентября</span>
+          <span class="date-week">среда</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">24 сентября</span>
+          <span class="date-week">четверг</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">27 сентября</span>
+          <span class="date-week">воскресенье</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span></div>
+          <div class="event-note">15:00 — трансформационная игра «Прикосновение Рэйки» для всех</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">28 сентября</span>
+          <span class="date-week">понедельник</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">30 сентября</span>
+          <span class="date-week">среда</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+  <div class="month">
+    <div class="eyebrow">2026</div>
+    <h2>Октябрь</h2>
+  </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">1 октября</span>
+          <span class="date-week">четверг</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">4 октября</span>
+          <span class="date-week">воскресенье</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span></div>
+          <div class="event-note">17:30 — фестиваль игр в Москве</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">5 октября</span>
+          <span class="date-week">понедельник</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">7 октября</span>
+          <span class="date-week">среда</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">8 октября</span>
+          <span class="date-week">четверг</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">10 октября</span>
+          <span class="date-week">суббота</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span></div>
+          <div class="event-note">15:00 — трансформационная игра «Шахматы мистиков» для всех</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">11 октября</span>
+          <span class="date-week">воскресенье</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span></div>
+          <div class="event-note">15:00 — игра «Прикосновение Рэйки» только для мастеров</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">12 октября</span>
+          <span class="date-week">понедельник</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">14 октября</span>
+          <span class="date-week">среда</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">15 октября</span>
+          <span class="date-week">четверг</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row day-special">
+        <div class="day-date">
+          <span class="date-num">17–18 октября</span>
+          <span class="date-week">суббота–воскресенье</span>
+        </div>
+        <div class="day-body">
+          <div class="event-note event-note-big">Семинар первой ступени Рэйки</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">21 октября</span>
+          <span class="date-week">среда</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">22 октября</span>
+          <span class="date-week">четверг</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">25 октября</span>
+          <span class="date-week">воскресенье</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span></div>
+          <div class="event-note">15:00 — игра «Прикосновение Рэйки» только для мастеров</div>
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">26 октября</span>
+          <span class="date-week">понедельник</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">28 октября</span>
+          <span class="date-week">среда</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+      <div class="day-row">
+        <div class="day-date">
+          <span class="date-num">29 октября</span>
+          <span class="date-week">четверг</span>
+        </div>
+        <div class="day-body">
+          <span class="tag tag-both">очно и дистанционно</span>
+          <div class="slots"><span class="slot">11:00</span><span class="slot">12:30</span><span class="slot">17:30</span><span class="slot">19:00</span></div>
+          
+        </div>
+      </div>
+
+  <div class="footer">
+    <p class="note">Бронирование места на игры и семинар — по предоплате.<br>Запись — как обычно, в WhatsApp или Телеграм.</p>
+    <div class="btn-row">
+      <a class="btn" href="https://wa.me/905368726735" target="_blank" rel="noopener">Записаться в WhatsApp</a>
+      <a class="btn btn-secondary" href="https://t.me/yulia_ozdemir" target="_blank" rel="noopener">Написать в Телеграм</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
