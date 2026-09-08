@@ -95,25 +95,31 @@ h1,h2{font-family:var(--font-display);font-weight:400;color:var(--text-title);ma
 .tag-both{background:var(--water-100);color:var(--water-800)}
 .tag-remote{background:var(--sand-100);color:var(--sand-800)}
 .slots{display:flex;flex-wrap:wrap;gap:8px}
+
+button.slot, button.event-note{
+  appearance:none;-webkit-appearance:none;
+  font-family:var(--font-sans);margin:0;
+}
 .slot{
   font-size:14px;font-weight:600;color:var(--ink-900);
   background:var(--air-000);border:1px solid var(--line-hairline);
   border-radius:var(--radius-1);padding:5px 11px;
   text-decoration:none;cursor:pointer;transition:background .15s ease,border-color .15s ease;
 }
-a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var(--air-050)}
+button.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var(--air-050)}
 .slot-booked{
   color:var(--text-muted);text-decoration:line-through;
   background:var(--air-100);border-color:var(--surface-card-border);
-  cursor:default;pointer-events:none;
+  cursor:default;
 }
+span.slot-booked{pointer-events:none}
 .event-note{
   font-size:14px;color:var(--sand-600);font-weight:600;
-  text-decoration:none;cursor:pointer;
+  text-decoration:none;cursor:pointer;background:none;border:none;padding:0;text-align:left;
 }
-.event-note:hover{color:var(--sand-800);text-decoration:underline}
+button.event-note:hover{color:var(--sand-800);text-decoration:underline}
 .event-note-big{font-size:19px;font-family:var(--font-display);color:var(--ink-900);font-weight:400}
-.event-note-big:hover{color:var(--sand-600)}
+button.event-note-big:hover{color:var(--sand-600)}
 
 .day-special{
   background:linear-gradient(135deg,var(--sand-100),var(--water-100));
@@ -143,7 +149,6 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
 .dot-open{background:var(--water-700)}
 .dot-booked{background:var(--ink-300)}
 
-/* модалка выбора мессенджера */
 .modal-overlay{
   position:fixed;inset:0;background:rgba(15,42,46,.45);
   display:none;align-items:center;justify-content:center;z-index:100;
@@ -202,7 +207,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><span class="slot slot-booked">11:00</span><span class="slot slot-booked">12:30</span><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 16 сентября (среда) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 16 сентября (среда) в 19:00.">19:00</a></div>
+          <div class="slots"><span class="slot slot-booked">11:00</span><span class="slot slot-booked">12:30</span><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 16 сентября (среда) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 16 сентября (среда) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -214,7 +219,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><span class="slot slot-booked">11:00</span><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 17 сентября (четверг) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 17 сентября (четверг) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 17 сентября (четверг) в 19:00.">19:00</a></div>
+          <div class="slots"><span class="slot slot-booked">11:00</span><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 17 сентября (четверг) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 17 сентября (четверг) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 17 сентября (четверг) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -226,8 +231,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-remote">только дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 19:00.">19:00</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 18 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 18 сентября (пятница) в 19:00.">19:00</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 18 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</button>
         </div>
       </div>
 
@@ -238,8 +243,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-remote">только дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 19:00.">19:00</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 19 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 19 сентября (суббота) в 19:00.">19:00</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 19 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</button>
         </div>
       </div>
 
@@ -250,8 +255,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-remote">только дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 19:00.">19:00</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 20 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 20 сентября (воскресенье) в 19:00.">19:00</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 20 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</button>
         </div>
       </div>
 
@@ -262,8 +267,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-remote">только дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 19:00.">19:00</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 21 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 сентября (понедельник) в 19:00.">19:00</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 21 сентября, Дистанционные сеансы и онлайн-игры.">Дистанционные сеансы и онлайн-игры →</button>
         </div>
       </div>
 
@@ -274,7 +279,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 23 сентября (среда) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -286,7 +291,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 24 сентября (четверг) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -298,8 +303,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 27 сентября (воскресенье) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 27 сентября (воскресенье) в 12:30.">12:30</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 27 сентября, 15:00 — трансформационная игра «Прикосновение Рэйки» для всех.">15:00 — трансформационная игра «Прикосновение Рэйки» для всех →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 27 сентября (воскресенье) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 27 сентября (воскресенье) в 12:30.">12:30</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 27 сентября, 15:00 — трансформационная игра «Прикосновение Рэйки» для всех.">15:00 — трансформационная игра «Прикосновение Рэйки» для всех →</button>
         </div>
       </div>
 
@@ -310,7 +315,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 сентября (понедельник) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -322,7 +327,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 30 сентября (среда) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -339,7 +344,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 1 октября (четверг) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -351,8 +356,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 4 октября (воскресенье) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 4 октября (воскресенье) в 12:30.">12:30</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 4 октября, 17:30 — фестиваль игр в Москве.">17:30 — фестиваль игр в Москве →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 4 октября (воскресенье) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 4 октября (воскресенье) в 12:30.">12:30</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 4 октября, 17:30 — фестиваль игр в Москве.">17:30 — фестиваль игр в Москве →</button>
         </div>
       </div>
 
@@ -363,7 +368,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 5 октября (понедельник) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -375,7 +380,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 7 октября (среда) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -387,7 +392,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 8 октября (четверг) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -399,8 +404,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 10 октября (суббота) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 10 октября (суббота) в 12:30.">12:30</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 10 октября, 15:00 — трансформационная игра «Шахматы мистиков» для всех.">15:00 — трансформационная игра «Шахматы мистиков» для всех →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 10 октября (суббота) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 10 октября (суббота) в 12:30.">12:30</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 10 октября, 15:00 — трансформационная игра «Шахматы мистиков» для всех.">15:00 — трансформационная игра «Шахматы мистиков» для всех →</button>
         </div>
       </div>
 
@@ -411,8 +416,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 11 октября (воскресенье) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 11 октября (воскресенье) в 12:30.">12:30</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 11 октября, 15:00 — игра «Прикосновение Рэйки» только для мастеров.">15:00 — игра «Прикосновение Рэйки» только для мастеров →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 11 октября (воскресенье) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 11 октября (воскресенье) в 12:30.">12:30</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 11 октября, 15:00 — игра «Прикосновение Рэйки» только для мастеров.">15:00 — игра «Прикосновение Рэйки» только для мастеров →</button>
         </div>
       </div>
 
@@ -423,7 +428,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 12 октября (понедельник) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -435,7 +440,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 14 октября (среда) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -447,7 +452,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 15 октября (четверг) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -458,7 +463,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
           <span class="date-week">суббота–воскресенье</span>
         </div>
         <div class="day-body">
-          <a href="#" class="event-note event-note-big book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 17–18 октября, семинар первой ступени Рэйки.">Семинар первой ступени Рэйки →</a>
+          <button type="button" class="event-note event-note-big book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 17–18 октября, семинар первой ступени Рэйки.">Семинар первой ступени Рэйки →</button>
         </div>
       </div>
 
@@ -469,7 +474,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 21 октября (среда) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -481,7 +486,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 22 октября (четверг) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -493,8 +498,8 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 25 октября (воскресенье) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 25 октября (воскресенье) в 12:30.">12:30</a></div>
-          <a href="#" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 25 октября, 15:00 — игра «Прикосновение Рэйки» только для мастеров.">15:00 — игра «Прикосновение Рэйки» только для мастеров →</a>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 25 октября (воскресенье) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 25 октября (воскресенье) в 12:30.">12:30</button></div>
+          <button type="button" class="event-note book-link" data-msg="Здравствуйте, Юлия! Хочу записаться: 25 октября, 15:00 — игра «Прикосновение Рэйки» только для мастеров.">15:00 — игра «Прикосновение Рэйки» только для мастеров →</button>
         </div>
       </div>
 
@@ -505,7 +510,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 26 октября (понедельник) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -517,7 +522,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 28 октября (среда) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -529,7 +534,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
         </div>
         <div class="day-body">
           <span class="tag tag-both">очно и дистанционно</span>
-          <div class="slots"><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 11:00.">11:00</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 12:30.">12:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 17:30.">17:30</a><a href="#" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 19:00.">19:00</a></div>
+          <div class="slots"><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 11:00.">11:00</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 12:30.">12:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 17:30.">17:30</button><button type="button" class="slot book-link" data-msg="Здравствуйте, Юлия! Хочу записаться на приём 29 октября (четверг) в 19:00.">19:00</button></div>
           
         </div>
       </div>
@@ -550,7 +555,7 @@ a.slot:hover{background:var(--water-700);border-color:var(--water-700);color:var
       <a class="modal-btn wa" id="modal-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
       <a class="modal-btn tg" id="modal-tg" href="#" target="_blank" rel="noopener">Телеграм</a>
     </div>
-    <button class="modal-close" id="modal-close">Отмена</button>
+    <button type="button" class="modal-close" id="modal-close">Отмена</button>
   </div>
 </div>
 
