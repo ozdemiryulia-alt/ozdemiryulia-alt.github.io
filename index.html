@@ -168,8 +168,22 @@ button.event-note-big:hover{color:var(--sand-600)}
 }
 .modal-btn.wa{background:#25D366;color:#fff}
 .modal-btn.tg{background:#2AABEE;color:#fff}
+.modal-fallback-hint{
+  font-size:12px;color:var(--text-muted);margin:18px 0 8px;text-align:left;
+}
+.modal-msg-box{
+  font-size:13px;color:var(--text-body);text-align:left;
+  background:var(--water-050);border:1px solid var(--line-hairline);
+  border-radius:10px;padding:10px 12px;margin-bottom:10px;
+  max-height:110px;overflow-y:auto;
+}
+.modal-copy{
+  width:100%;background:var(--air-000);border:1px solid var(--line-hairline);
+  color:var(--ink-900);font-family:var(--font-sans);font-weight:600;font-size:14px;
+  padding:11px;border-radius:999px;cursor:pointer;
+}
 .modal-close{
-  margin-top:16px;background:none;border:none;color:var(--text-muted);
+  margin-top:12px;background:none;border:none;color:var(--text-muted);
   font-size:13px;cursor:pointer;font-family:var(--font-sans);
 }
 
@@ -616,6 +630,9 @@ button.event-note-big:hover{color:var(--sand-600)}
       <a class="modal-btn wa" id="modal-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
       <a class="modal-btn tg" id="modal-tg" href="#" target="_blank" rel="noopener">Телеграм</a>
     </div>
+    <p class="modal-fallback-hint">Если приложение не открылось, скопируйте текст и вставьте его в любой мессенджер вручную, написав @yulia_ozdemir или +90 536 872 67 35:</p>
+    <div class="modal-msg-box" id="modal-msg-box"></div>
+    <button type="button" class="modal-copy" id="modal-copy">Скопировать текст</button>
     <button type="button" class="modal-close" id="modal-close">Отмена</button>
   </div>
 </div>
@@ -628,15 +645,35 @@ button.event-note-big:hover{color:var(--sand-600)}
   var waBtn = document.getElementById("modal-wa");
   var tgBtn = document.getElementById("modal-tg");
   var closeBtn = document.getElementById("modal-close");
+  var msgBox = document.getElementById("modal-msg-box");
+  var copyBtn = document.getElementById("modal-copy");
+  var currentMsg = "";
 
   document.querySelectorAll(".book-link").forEach(function(el){
     el.addEventListener("click", function(e){
       e.preventDefault();
-      var msg = el.getAttribute("data-msg");
-      waBtn.href = "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(msg);
-      tgBtn.href = "https://t.me/" + TG_USER + "?text=" + encodeURIComponent(msg);
+      currentMsg = el.getAttribute("data-msg");
+      waBtn.href = "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(currentMsg);
+      tgBtn.href = "https://t.me/" + TG_USER + "?text=" + encodeURIComponent(currentMsg);
+      msgBox.textContent = currentMsg;
+      copyBtn.textContent = "Скопировать текст";
       overlay.classList.add("open");
     });
+  });
+  copyBtn.addEventListener("click", function(){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(currentMsg).then(function(){
+        copyBtn.textContent = "Скопировано ✓";
+      });
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = currentMsg;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      copyBtn.textContent = "Скопировано ✓";
+    }
   });
   closeBtn.addEventListener("click", function(){ overlay.classList.remove("open"); });
   overlay.addEventListener("click", function(e){
