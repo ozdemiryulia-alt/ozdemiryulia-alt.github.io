@@ -20,4 +20,4 @@ User-agent: Google-Extended
 Allow: /
 
 Host: ozdemiryulia-alt.github.io
-Sitemap: https://ozdemiryulia-alt.github.io/moscow/sitemap.xml
+Sitemap: https://ozdemiryulia-alt.github.io/sitemap.xml
