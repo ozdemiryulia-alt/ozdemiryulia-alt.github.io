@@ -1,152 +1,119 @@
-/* Вода и Золото. Общий стиль сайта Юлии ОздеМир.
-   Формы: мягкий радиус и круг. Формы листа в системе нет. */
+/* Сайт Юлии ОздеМир. Плотная вёрстка, фотографии её собственные.
+   Шрифты и цвета брендовые, оформление фото простое:
+   прямоугольник с небольшим скруглением, без плёнок, кругов и рамок. */
 
 :root{
   --water-050:#F1F7F7; --water-100:#E4EFEF; --water-300:#B0D0D1;
-  --water-500:#6FA9AC; --water-700:#33787E; --water-900:#14454B;
-  --ink-900:#0F2A2E; --ink-500:#4E7175;
+  --water-700:#33787E; --water-900:#14454B;
+  --ink-500:#4E7175;
   --air-050:#FCFBF8; --air-100:#F6F3EC; --air-300:#DED8CA;
   --sand-100:#F5EADA; --sand-400:#D8BE9B; --sand-600:#B08E63;
-  --text-body:rgba(15,42,46,.74); --text-muted:rgba(15,42,46,.48);
-
-  --radius-2:8px; --radius-3:16px; --radius-soft:48px; --radius-circle:50%;
-
-  --scrim-light:linear-gradient(to top,rgba(252,251,248,.86) 0%,rgba(252,251,248,.42) 42%,rgba(252,251,248,0) 78%);
-  --wash-water:linear-gradient(160deg,var(--water-100) 0%,var(--air-050) 52%,var(--sand-100) 100%);
-  --shadow-soft:0 20px 50px -30px rgba(15,42,46,.20);
-
-  --ease-drift:cubic-bezier(.22,.61,.36,1);
-  --sp-6:48px; --sp-8:80px; --sp-10:144px;
+  --text-body:rgba(15,42,46,.80); --text-muted:rgba(15,42,46,.50);
+  --radius:10px;
+  --shadow-soft:0 14px 34px -24px rgba(15,42,46,.28);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --sp-4:28px; --sp-5:40px; --sp-6:56px; --sp-7:72px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   background:var(--air-050); color:var(--text-body);
   font-family:'Manrope',system-ui,sans-serif; font-weight:300;
-  font-size:16px; line-height:1.72; -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block}
-.obolochka{max-width:1200px;margin:0 auto;padding-left:28px;padding-right:28px}
-.uzko{max-width:780px}
+a{color:var(--water-700)}
+.obolochka{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
 
-@keyframes ds-rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes ds-breathe{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.035)}}
-@keyframes ds-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.vsplyt{animation:ds-rise .7s var(--ease-drift) both}
-
+.nadzag{font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--water-700);margin-bottom:12px}
 .romb{display:inline-block;width:6px;height:6px;background:var(--sand-600);transform:rotate(45deg)}
 
-.ritm{display:flex;gap:14px;align-items:center;margin:0 0 28px}
-.ritm i{width:5px;height:5px;border-radius:50%;background:var(--water-300);display:block;animation:ds-drift 1.8s var(--ease-drift) infinite}
-.ritm i:nth-child(2){animation-delay:.18s}
-.ritm i:nth-child(3){animation-delay:.36s}
-.ritm i:nth-child(4){animation-delay:.54s}
-.ritm i:nth-child(5){animation-delay:.72s;background:var(--sand-400)}
-
-.nadzag{font-size:11px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--water-700);margin-bottom:18px}
-
-.razdel{display:flex;align-items:center;gap:16px}
-.razdel::before,.razdel::after{content:"";height:1px;background:var(--air-300);flex:1}
-
-/* ── шапка и навигация ─────────────────────────── */
-.verh{position:relative;z-index:5;border-bottom:1px solid rgba(20,69,75,.07)}
-.shapka{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px}
-.znak{font-family:'Prata',serif;font-size:21px;letter-spacing:.14em;color:var(--water-900);text-decoration:none}
-nav{display:flex;gap:22px;flex-wrap:wrap}
-nav a{font-size:13px;letter-spacing:.05em;color:var(--ink-500);text-decoration:none;padding-bottom:4px;border-bottom:1px solid transparent;transition:border-color .36s var(--ease-drift),color .36s var(--ease-drift)}
+/* ── шапка ─────────────────────────────────────── */
+.verh{background:var(--air-050);border-bottom:1px solid rgba(20,69,75,.09);position:sticky;top:0;z-index:20}
+.shapka{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px}
+.znak{font-family:'Prata',serif;font-size:20px;letter-spacing:.10em;color:var(--water-900);text-decoration:none;white-space:nowrap}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{font-size:14px;color:var(--ink-500);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent;transition:color .3s var(--ease),border-color .3s var(--ease)}
 nav a:hover{color:var(--water-900);border-bottom-color:var(--sand-400)}
 nav a.tut{color:var(--water-900);border-bottom-color:var(--water-700)}
 
-/* ── кадры ─────────────────────────────────────── */
-.kadr{position:relative;overflow:hidden;box-shadow:var(--shadow-soft)}
-.kadr img{width:100%;height:100%;object-fit:cover}
-.kadr::after{content:"";position:absolute;inset:18px;border:1px solid rgba(252,251,248,.55);pointer-events:none}
-.kadr-plenka::before{content:"";position:absolute;inset:0;background:var(--scrim-light);z-index:1;pointer-events:none}
-.kadr-soft{border-radius:var(--radius-soft);aspect-ratio:4/5}
-.kadr-soft::after{border-radius:calc(var(--radius-soft) - 18px)}
-.kadr-krug{border-radius:var(--radius-circle);aspect-ratio:1/1}
-.kadr-krug::after{inset:14px;border-radius:50%}
-.kadr-shirokiy{border-radius:var(--radius-3);aspect-ratio:16/9}
-.kadr-shirokiy::after{border-radius:2px}
-.podpis-na-kadre{position:absolute;left:34px;right:34px;bottom:30px;z-index:2;font-family:'Prata',serif;font-size:22px;line-height:1.24;color:var(--water-900)}
+/* ── шапка страницы ────────────────────────────── */
+.titul{background:var(--water-050);border-bottom:1px solid rgba(20,69,75,.07);padding-top:var(--sp-6);padding-bottom:var(--sp-6)}
+.titul-setka{display:grid;grid-template-columns:1fr 40%;gap:var(--sp-6);align-items:center}
+.zag-stranicy{font-family:'Prata',serif;font-size:44px;line-height:1.16;color:var(--water-900);margin-bottom:16px}
+.lid{font-size:19px;line-height:1.6;max-width:52ch;color:var(--ink-500)}
+
+/* ── фото ──────────────────────────────────────── */
+.foto{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft)}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto-vysokoe{aspect-ratio:4/5}
+.foto-shirokoe{aspect-ratio:3/2}
+.podpis{font-size:13px;color:var(--text-muted);margin-top:8px}
+
+/* ── текст ─────────────────────────────────────── */
+.blok{padding-top:var(--sp-7);padding-bottom:0}
+.blok:last-of-type{padding-bottom:var(--sp-7)}
+.zag-sekcii{font-family:'Prata',serif;font-size:32px;line-height:1.2;color:var(--water-900);margin-bottom:var(--sp-4)}
+h3{font-family:'Prata',serif;font-weight:400;font-size:23px;line-height:1.25;color:var(--water-900);margin-bottom:10px}
+.proza p{margin-bottom:16px;max-width:66ch}
+.proza ul{margin:0 0 18px 0;padding-left:20px;max-width:66ch}
+.proza li{margin-bottom:8px}
+.opora{font-family:'Prata',serif;font-size:26px;line-height:1.32;color:var(--water-900);border-left:2px solid var(--sand-400);padding-left:20px;margin:var(--sp-4) 0;max-width:34ch}
+
+/* ── сетки ─────────────────────────────────────── */
+.dve{display:grid;grid-template-columns:1fr 38%;gap:var(--sp-6);align-items:start}
+.dve-obratno{display:grid;grid-template-columns:38% 1fr;gap:var(--sp-6);align-items:start}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5)}
+.setka{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4)}
+
+.kart{display:block;text-decoration:none;color:inherit;background:var(--air-100);border:1px solid rgba(20,69,75,.09);border-radius:var(--radius);padding:26px 24px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.kart:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft)}
+.kart-voda{background:var(--water-050)}
+.kart p{margin-bottom:14px}
+.vedet{font-size:13px;color:var(--water-700);border-bottom:1px solid var(--sand-400);padding-bottom:2px}
+
+.podsetka{display:flex;gap:24px;flex-wrap:wrap;margin-top:var(--sp-4);padding-top:18px;border-top:1px solid var(--air-300)}
+.podsetka a{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-500);text-decoration:none}
+.podsetka a:hover{color:var(--water-700)}
+
+/* ── полоса фотографий ─────────────────────────── */
+.lenta{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.lenta .foto{aspect-ratio:1/1}
+.lenta-diplomy{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.lenta-diplomy .foto{aspect-ratio:3/4;box-shadow:none;border:1px solid var(--air-300)}
+.lenta-diplomy .foto img{object-fit:contain;background:#fff}
 
 /* ── кнопки ────────────────────────────────────── */
-.knopki{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
-.knopka{display:inline-block;padding:15px 30px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:transform .36s var(--ease-drift)}
+.knopki{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.knopka{display:inline-block;padding:13px 26px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:500;transition:transform .3s var(--ease)}
 .knopka:hover{transform:translateY(-2px)}
 .osn{background:var(--water-700);color:#fff}
 .vtor{border:1px solid var(--sand-400);color:var(--water-900)}
 
-/* ── типографика страниц ───────────────────────── */
-.zag-stranicy{font-family:'Prata',serif;font-size:56px;line-height:1.14;color:var(--water-900);margin-bottom:24px}
-.zag-sekcii{font-family:'Prata',serif;font-size:44px;line-height:1.14;color:var(--water-900)}
-.lid{font-weight:200;font-size:20px;line-height:1.68;max-width:44ch;color:var(--ink-500)}
-.proza p{margin-bottom:20px;max-width:60ch}
-.opora{font-family:'Prata',serif;font-size:32px;line-height:1.3;color:var(--water-900);max-width:19ch}
-.em-rule{border-bottom:1px solid var(--sand-400);padding-bottom:1px}
-.em-serif{font-family:'Prata',serif;font-size:1.22em;color:var(--water-900)}
-
-/* ── шапка внутренней страницы ─────────────────── */
-.titul{background:var(--wash-water);padding-top:var(--sp-8);padding-bottom:var(--sp-8);position:relative;overflow:hidden}
-.krug-dekor{position:absolute;border-radius:50%;border:1px solid rgba(111,169,172,.30);pointer-events:none}
-.krug-a{width:520px;height:520px;top:-190px;right:-170px;animation:ds-breathe 4.2s ease-in-out infinite}
-.krug-b{width:300px;height:300px;bottom:-140px;left:-110px;border-color:rgba(216,190,155,.45)}
-.titul-soderzhimoe{position:relative;z-index:2}
-
-/* ── сетки ─────────────────────────────────────── */
-.dve{display:grid;grid-template-columns:46% 1fr;gap:56px;align-items:center}
-.dve-tekst{display:grid;grid-template-columns:1fr 40%;gap:64px;align-items:start}
-.setka{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
-.tri p{max-width:38ch}
-.shapka-sekcii{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:var(--sp-6)}
-
-.kart{display:block;text-decoration:none;color:inherit;background:var(--air-100);border:1px solid rgba(20,69,75,.08);border-radius:var(--radius-3);padding:38px 34px;transition:transform .36s var(--ease-drift),box-shadow .36s var(--ease-drift)}
-.kart:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
-.kart-voda{background:var(--water-050)}
-.kart .nomer{font-family:'Prata',serif;font-size:14px;color:var(--sand-600);letter-spacing:.2em;display:block;margin-bottom:14px}
-.kart h3{font-family:'Prata',serif;font-weight:400;font-size:26px;line-height:1.22;color:var(--water-900);margin-bottom:12px}
-.kart p{max-width:46ch;margin-bottom:20px}
-.vedet{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--water-700);border-bottom:1px solid var(--sand-400);padding-bottom:3px}
-
-.podsetka{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid var(--air-300)}
-.podsetka a{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-500);text-decoration:none}
-.podsetka a:hover{color:var(--water-700)}
-
-/* ── ботаническая полоса ───────────────────────── */
-.botanika{padding-top:var(--sp-10);padding-bottom:0;text-align:center}
-.botanika .lenta{height:300px;border-radius:var(--radius-3);overflow:hidden;margin-bottom:34px}
-.botanika .lenta img{width:100%;height:100%;object-fit:cover}
-.botanika-stroka{font-family:'Prata',serif;font-size:28px;line-height:1.3;color:var(--water-900);max-width:22ch;margin:0 auto}
-
-/* ── цитата ────────────────────────────────────── */
-.citata{padding-top:var(--sp-10);padding-bottom:0;text-align:center}
-.citata blockquote{font-family:'Prata',serif;font-size:32px;line-height:1.38;color:var(--water-900);max-width:22ch;margin:26px auto 22px}
-.citata cite{font-style:normal;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--water-700)}
+/* ── отзыв ─────────────────────────────────────── */
+.otzyv{background:var(--sand-100);border-radius:var(--radius);padding:30px 28px;margin-top:var(--sp-6)}
+.otzyv blockquote{font-family:'Prata',serif;font-size:22px;line-height:1.38;color:var(--water-900);margin-bottom:12px}
+.otzyv cite{font-style:normal;font-size:14px;color:var(--water-700)}
 
 /* ── контакты ──────────────────────────────────── */
-.blok-svyaz{background:var(--sand-100);border-radius:var(--radius-3);padding:32px 30px}
-.kontakty-kolonki{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-.kontakty-kolonki h4,.blok-svyaz h4{font-size:11px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--water-700);margin-bottom:14px}
+.blok-svyaz{background:var(--water-050);border-radius:var(--radius);padding:26px 24px}
+.blok-svyaz h4,.kontakty-kolonki h4{font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--water-700);margin-bottom:10px}
+.kontakty-kolonki{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5)}
 
-/* ── подвал ────────────────────────────────────── */
-footer{padding-top:44px;padding-bottom:60px;margin-top:var(--sp-10)}
-.podval{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--text-muted);letter-spacing:.04em;border-top:1px solid var(--air-300);padding-top:24px}
-.podval a{color:var(--text-muted);text-decoration:none}
-.podval a:hover{color:var(--water-700)}
-
-.otstup{padding-top:var(--sp-10);padding-bottom:0}
+footer{margin-top:var(--sp-7);background:var(--water-900);color:rgba(255,255,255,.72);padding-top:32px;padding-bottom:36px}
+.podval{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px}
+.podval a{color:rgba(255,255,255,.9);text-decoration:none}
 
 @media(max-width:880px){
-  .dve,.dve-tekst,.setka,.tri,.kontakty-kolonki{grid-template-columns:1fr;gap:40px}
-  .zag-stranicy{font-size:38px}
-  .zag-sekcii{font-size:30px}
-  .opora,.citata blockquote,.botanika-stroka{font-size:26px}
-  .shapka-sekcii{grid-template-columns:1fr}
-  .krug-a{width:300px;height:300px;top:-120px;right:-110px}
-  .krug-b{display:none}
+  body{font-size:16px}
+  .titul-setka,.dve,.dve-obratno,.tri,.setka,.kontakty-kolonki{grid-template-columns:1fr;gap:var(--sp-5)}
+  .dve-obratno > div:first-child{order:2}
+  .zag-stranicy{font-size:32px}
+  .zag-sekcii{font-size:26px}
+  .opora{font-size:21px}
+  .lenta{grid-template-columns:repeat(2,1fr)}
+  .lenta-diplomy{grid-template-columns:repeat(3,1fr)}
   nav{gap:14px}
-  nav a{font-size:12px}
-  :root{--sp-10:88px;--sp-8:64px}
+  nav a{font-size:13px}
+  :root{--sp-7:48px;--sp-6:36px;--sp-5:28px}
 }
