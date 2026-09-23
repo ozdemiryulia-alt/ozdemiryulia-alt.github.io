@@ -4,203 +4,53 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Юлия ОздеМир · биодинамика, Рэйки, трансформационные игры</title>
+<meta name="description" content="Оздоровительные сеансы биодинамики и Рэйки, обучение и трансформационные игры. Очно в Анталье и Москве, онлайн.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prata&family=Manrope:wght@200;300;400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --water-000:#FAFDFD; --water-050:#F1F7F7; --water-100:#E4EFEF; --water-200:#CFE3E3;
-  --water-300:#B0D0D1; --water-500:#6FA9AC; --water-700:#33787E; --water-900:#14454B;
-  --ink-900:#0F2A2E; --ink-500:#4E7175;
-  --air-050:#FCFBF8; --air-100:#F6F3EC; --air-300:#DED8CA;
-  --sand-100:#F5EADA; --sand-200:#EBDDC8; --sand-400:#D8BE9B; --sand-600:#B08E63;
-  --coral-500:#DE5B4E;
-  --text-body:rgba(15,42,46,.74); --text-muted:rgba(15,42,46,.48);
-
-  --radius-1:3px; --radius-2:8px; --radius-3:16px;
-  --radius-soft:48px; --radius-leaf:999px 12px 999px 12px; --radius-circle:50%;
-
-  --scrim-light:linear-gradient(to top,rgba(252,251,248,.86) 0%,rgba(252,251,248,.42) 42%,rgba(252,251,248,0) 78%);
-  --wash-water:linear-gradient(160deg,var(--water-100) 0%,var(--air-050) 52%,var(--sand-100) 100%);
-  --shadow-soft:0 20px 50px -30px rgba(15,42,46,.20);
-  --glow-water:0 0 70px -18px rgba(111,169,172,.45);
-
-  --ease-drift:cubic-bezier(.22,.61,.36,1);
-  --sp-6:48px; --sp-8:80px; --sp-10:144px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  background:var(--air-050); color:var(--text-body);
-  font-family:'Manrope',system-ui,sans-serif; font-weight:300;
-  font-size:16px; line-height:1.72; -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-.obolochka{max-width:1200px;margin:0 auto;padding-left:28px;padding-right:28px}
-
-@keyframes ds-rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes ds-breathe{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.035)}}
-@keyframes ds-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.vsplyt{animation:ds-rise .7s var(--ease-drift) both}
-
-/* золотой ромб */
-.romb{display:inline-block;width:6px;height:6px;background:var(--sand-600);transform:rotate(45deg)}
-
-/* ритм: ряд точек */
-.ritm{display:flex;gap:14px;align-items:center;margin:0 0 28px}
-.ritm i{width:5px;height:5px;border-radius:50%;background:var(--water-300);display:block;animation:ds-drift 1.8s var(--ease-drift) infinite}
-.ritm i:nth-child(2){animation-delay:.18s}
-.ritm i:nth-child(3){animation-delay:.36s}
-.ritm i:nth-child(4){animation-delay:.54s}
-.ritm i:nth-child(5){animation-delay:.72s;background:var(--sand-400)}
-
-/* надзаголовок */
-.nadzag{font-size:11px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--water-700);margin-bottom:18px}
-
-/* разделитель с ромбом */
-.razdel{display:flex;align-items:center;gap:16px;margin:0}
-.razdel::before,.razdel::after{content:"";height:1px;background:var(--air-300);flex:1}
-
-/* шапка */
-header{position:relative;z-index:3;padding-top:30px}
-.shapka{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.znak{font-family:'Prata',serif;font-size:21px;letter-spacing:.14em;color:var(--water-900)}
-nav{display:flex;gap:24px;flex-wrap:wrap}
-nav a{font-size:13px;letter-spacing:.06em;color:var(--ink-500);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent;transition:border-color .36s var(--ease-drift)}
-nav a:hover{border-bottom-color:var(--sand-400)}
-
-/* первый экран */
-.geroy{position:relative;background:var(--wash-water);padding-top:var(--sp-8);padding-bottom:var(--sp-8);overflow:hidden}
-.krug-dekor{position:absolute;border-radius:50%;border:1px solid rgba(111,169,172,.30);pointer-events:none}
-.krug-a{width:520px;height:520px;top:-190px;right:-170px;animation:ds-breathe 4.2s ease-in-out infinite}
-.krug-b{width:300px;height:300px;bottom:-140px;left:-110px;border-color:rgba(216,190,155,.45)}
-.geroy-setka{display:grid;grid-template-columns:46% 1fr;gap:56px;align-items:center;position:relative;z-index:2}
-.imya{font-family:'Prata',serif;font-size:66px;line-height:1.14;color:var(--water-900);margin-bottom:24px}
-.lid{font-weight:200;font-size:20px;line-height:1.68;max-width:44ch;color:var(--ink-500)}
-
-/* кадр с плёнкой и внутренней рамкой */
-.kadr{position:relative;overflow:hidden;box-shadow:var(--shadow-soft)}
-.kadr img{width:100%;height:100%;object-fit:cover;display:block}
-.kadr::after{content:"";position:absolute;inset:18px;border:1px solid rgba(252,251,248,.55);pointer-events:none}
-.kadr-plenka::before{content:"";position:absolute;inset:0;background:var(--scrim-light);z-index:1;pointer-events:none}
-.kadr-soft{border-radius:var(--radius-soft);aspect-ratio:4/5}
-.kadr-list{border-radius:var(--radius-leaf);aspect-ratio:4/5}
-.kadr-krug{border-radius:var(--radius-circle);aspect-ratio:1/1}
-.kadr-soft::after{border-radius:calc(var(--radius-soft) - 18px)}
-.kadr-list::after{border-radius:999px 6px 999px 6px}
-.kadr-krug::after{inset:14px;border-radius:50%}
-.podpis-na-kadre{position:absolute;left:34px;right:34px;bottom:30px;z-index:2;font-family:'Prata',serif;font-size:22px;line-height:1.24;color:var(--water-900)}
-
-/* кнопки */
-.knopki{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
-.knopka{display:inline-block;padding:15px 30px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:transform .36s var(--ease-drift)}
-.knopka:hover{transform:translateY(-2px)}
-.osn{background:var(--water-700);color:#fff}
-.vtor{border:1px solid var(--sand-400);color:var(--water-900)}
-
-/* направления */
-.napravleniya{padding-top:var(--sp-10);padding-bottom:var(--sp-10)}
-.shapka-sekcii{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:var(--sp-6)}
-.zag-sekcii{font-family:'Prata',serif;font-size:44px;line-height:1.14;color:var(--water-900)}
-.setka{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.kart{background:var(--air-100);border:1px solid rgba(20,69,75,.08);border-radius:var(--radius-3);padding:38px 34px;position:relative;overflow:hidden;transition:transform .36s var(--ease-drift),box-shadow .36s var(--ease-drift)}
-.kart:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft)}
-.kart .nomer{font-family:'Prata',serif;font-size:14px;color:var(--sand-600);letter-spacing:.2em;display:block;margin-bottom:14px}
-.kart h3{font-family:'Prata',serif;font-weight:400;font-size:26px;line-height:1.22;color:var(--water-900);margin-bottom:12px}
-.kart p{max-width:46ch;margin-bottom:20px}
-.kart a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--water-700);text-decoration:none;border-bottom:1px solid var(--sand-400);padding-bottom:3px}
-.kart-voda{background:var(--water-050)}
-
-/* карточка как ссылка */
-.kart{display:block;text-decoration:none;color:inherit}
-.vedet{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--water-700);border-bottom:1px solid var(--sand-400);padding-bottom:3px}
-
-/* мелкие ссылки под карточками */
-.podsetka{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px solid var(--air-300)}
-.podsetka a{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.04em;color:var(--ink-500);text-decoration:none}
-.podsetka a:hover{color:var(--water-700)}
-
-/* ботаническая полоса */
-.botanika{padding-top:var(--sp-8);padding-bottom:var(--sp-8);text-align:center}
-.botanika .lenta{height:300px;border-radius:var(--radius-3);overflow:hidden;margin-bottom:34px}
-.botanika .lenta img{width:100%;height:100%;object-fit:cover;display:block}
-.botanika-stroka{font-family:'Prata',serif;font-size:28px;line-height:1.3;color:var(--water-900);max-width:22ch;margin:0 auto}
-
-/* подход */
-.podhod{background:var(--water-050);padding-top:var(--sp-10);padding-bottom:var(--sp-10);position:relative;overflow:hidden}
-.podhod-setka{display:grid;grid-template-columns:1fr 40%;gap:64px;align-items:start;position:relative;z-index:2}
-.podhod p{margin-bottom:20px;max-width:60ch}
-.opora{font-family:'Prata',serif;font-size:32px;line-height:1.3;color:var(--water-900);max-width:19ch;margin-bottom:28px}
-.em-rule{border-bottom:1px solid var(--sand-400);padding-bottom:1px}
-.em-serif{font-family:'Prata',serif;font-size:1.22em;color:var(--water-900)}
-
-/* цитата */
-.citata{padding-top:var(--sp-10);padding-bottom:var(--sp-10);text-align:center}
-.citata blockquote{font-family:'Prata',serif;font-size:32px;line-height:1.38;color:var(--water-900);max-width:22ch;margin:26px auto 22px}
-.citata cite{font-style:normal;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--water-700)}
-
-/* контакты */
-.kontakty{padding-top:var(--sp-10);padding-bottom:var(--sp-8)}
-.kontakty-setka{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:var(--sp-6)}
-.kontakty h4{font-size:11px;font-weight:500;letter-spacing:.30em;text-transform:uppercase;color:var(--water-700);margin-bottom:14px}
-.kontakty p{margin-bottom:6px}
-.blok-svyaz{background:var(--sand-100);border-radius:var(--radius-3);padding:32px 30px}
-
-footer{padding-top:44px;padding-bottom:60px}
-.podval{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--text-muted);letter-spacing:.04em;border-top:1px solid var(--air-300);padding-top:24px}
-
-@media(max-width:880px){
-  .geroy-setka,.setka,.podhod-setka,.kontakty-setka{grid-template-columns:1fr;gap:40px}
-  .imya{font-size:42px}
-  .zag-sekcii{font-size:30px}
-  .opora,.citata blockquote{font-size:26px}
-  .shapka-sekcii{grid-template-columns:1fr}
-  .krug-a{width:300px;height:300px;top:-120px;right:-110px}
-  .krug-b{display:none}
-  nav{gap:16px}
-  nav a{font-size:12px}
-  :root{--sp-10:88px;--sp-8:64px}
-}
-</style>
+<link rel="stylesheet" href="stil.css">
 </head>
 <body>
 
-<div class="geroy">
+<div class="verh">
+  <div class="obolochka shapka">
+    <a class="znak" href="index.html">Юлия ОздеМир</a>
+    <nav><a href="index.html" class="tut">Главная</a><a href="o-mne.html">Обо мне</a><a href="biodinamika.html">Биодинамика</a><a href="obuchenie.html">Обучение Рэйки</a><a href="igry.html">Т-игры</a><a href="kontakty.html">Контакты</a></nav>
+  </div>
+</div>
+
+<section class="titul">
   <span class="krug-dekor krug-a"></span>
   <span class="krug-dekor krug-b"></span>
+  <div class="obolochka titul-soderzhimoe vsplyt">
+    <div class="ritm"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="nadzag">Биодинамика · Рэйки · трансформационные игры</div>
+    <h1 class="zag-stranicy">Мои руки<br>всегда в работе</h1>
+    <p class="lid">Тринадцать лет я провожу оздоровительные сеансы, чтобы вам стало легче жить вашу непростую жизнь. Перед сеансом мы говорим о том, что вас беспокоит.</p>
+  </div>
+</section>
 
-  <header>
-    <div class="obolochka shapka">
-      <div class="znak">Юлия ОздеМир</div>
-      <nav>
-        <a href="#napravleniya">Сеансы</a>
-        <a href="#napravleniya">Обучение</a>
-        <a href="#napravleniya">Игры</a>
-        <a href="#podhod">Мой подход</a>
-        <a href="#kontakty">Контакты</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="obolochka geroy-setka" style="padding-top:var(--sp-8)">
-    <div class="vsplyt">
-      <div class="ritm"><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="nadzag">Биодинамика · Рэйки · трансформационные игры</div>
-      <h1 class="imya">Мои руки<br>всегда в работе</h1>
-      <p class="lid">Тринадцать лет я провожу оздоровительные сеансы, чтобы вам стало легче жить вашу непростую жизнь. Перед сеансом мы говорим о том, что вас беспокоит.</p>
-      <div class="knopki">
-        <a class="knopka osn" href="#kontakty">Записаться</a>
-        <a class="knopka vtor" href="#napravleniya">Что я делаю</a>
-      </div>
-    </div>
-    <div class="kadr kadr-soft kadr-plenka vsplyt" style="animation-delay:.15s">
+<section class="obolochka otstup">
+  <div class="dve">
+    <div class="kadr kadr-soft kadr-plenka">
       <img src="foto/work-head-hold.jpg" alt="Сеанс биодинамики">
       <div class="podpis-na-kadre">Почти неощутимое<br>прикосновение</div>
     </div>
-  </section>
-</div>
+    <div>
+      <div class="nadzag">Коротко</div>
+      <div class="proza">
+        <p>Биодинамика решает жизненные задачи через мягкую работу с телом. Почти неощутимые касания, без манипуляций, вправлений и давления.</p>
+        <p>С чем приходят: боли, болезни, восстановление после травм, операций, родов, нервного срыва и тяжёлых периодов. Состояние, из которого организм сам уже не выходит.</p>
+      </div>
+      <div class="knopki">
+        <a class="knopka osn" href="kontakty.html">Записаться</a>
+        <a class="knopka vtor" href="biodinamika.html">Что это такое</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="obolochka napravleniya" id="napravleniya">
+<section class="obolochka otstup">
   <div class="shapka-sekcii">
     <h2 class="zag-sekcii">Четыре направления</h2>
     <div class="ritm" style="margin:0"><i></i><i></i><i></i></div>
@@ -212,13 +62,13 @@ footer{padding-top:44px;padding-bottom:60px}
       <p>Древние и современные методы, безопасные и мягкие. Очно в Анталье и Москве, онлайн для всего мира.</p>
       <span class="vedet">Открыть страницу</span>
     </a>
-    <a class="kart kart-voda" href="https://ozdemiryulia-alt.github.io/reiki/">
+    <a class="kart kart-voda" href="obuchenie.html">
       <span class="nomer">02</span>
       <h3>Обучение Рэйки</h3>
       <p>Японское оздоровительное искусство для саморазвития, самопомощи и работы с другими людьми. Первая ступень, вторая и мастерская.</p>
       <span class="vedet">Открыть страницу</span>
     </a>
-    <a class="kart kart-voda" href="https://ozdemiryulia-alt.github.io/reikigameplayers/">
+    <a class="kart kart-voda" href="igry.html">
       <span class="nomer">03</span>
       <h3>Трансформационные игры</h3>
       <p>Я создатель игры «Прикосновение Рэйки», веду «Активацию здоровья» и «Шахматы Мистиков». Современный способ разобрать любой жизненный затык.</p>
@@ -231,11 +81,11 @@ footer{padding-top:44px;padding-bottom:60px}
       <span class="vedet">Открыть страницу</span>
     </a>
   </div>
-
   <div class="podsetka">
-    <a href="https://ozdemiryulia-alt.github.io/reiki2/"><span class="romb"></span>Семинар 2 ступени Рэйки</a>
+    <a href="https://ozdemiryulia-alt.github.io/reiki/"><span class="romb"></span>Семинар 1 ступени</a>
+    <a href="https://ozdemiryulia-alt.github.io/reiki2/"><span class="romb"></span>Семинар 2 ступени</a>
     <a href="https://ozdemiryulia-alt.github.io/reikigameonline/"><span class="romb"></span>Игра онлайн</a>
-    <a href="https://ozdemiryulia-alt.github.io/reikigamebox/"><span class="romb"></span>Игра для Мастеров, коробка</a>
+    <a href="https://ozdemiryulia-alt.github.io/reikigamebox/"><span class="romb"></span>Игра для Мастеров</a>
   </div>
 </section>
 
@@ -244,62 +94,16 @@ footer{padding-top:44px;padding-bottom:60px}
   <p class="botanika-stroka">Вода не спорит. Она находит свой путь.</p>
 </section>
 
-<section class="podhod" id="podhod">
-  <div class="obolochka podhod-setka">
-    <div>
-      <div class="nadzag">Мой подход</div>
-      <p class="opora">Если вы на грани, я <span class="em-rule">рядом</span>. Легко не будет.</p>
-      <p>Я работаю с людьми больше тринадцати лет и только делаю вид, что лечу коленки. По правде говоря, я работаю с теми, кто находится на грани.</p>
-      <p>Это не те, кто ищет обезболивание. Это те, кто больше не может жить по-старому и готов пройти через боль, страх и внутренние сломы к чему-то подлинному.</p>
-      <p>Я не даю готовых решений, гарантий и обещаний. Я сопровождаю в том, что действительно важно. Никакого спасательства и никакого давления.</p>
-      <p>Работаю с тем, что стоит за симптомом. Часто это связано с <span class="em-serif">родом</span>.</p>
-    </div>
-    <div>
-      <div class="kadr kadr-list"><img src="foto/portrait-linen-botanical.jpg" alt="Юлия ОздеМир"></div>
-      <div class="ritm" style="margin-top:26px;justify-content:center"><i></i><i></i><i></i><i></i></div>
-    </div>
-  </div>
-</section>
-
 <section class="obolochka citata">
   <div class="razdel"><span class="romb"></span></div>
   <blockquote>После второго сеанса прошли боли в суставах, которые досаждали почти год.</blockquote>
   <cite>Наталья, Москва, 47 лет</cite>
 </section>
 
-<section class="obolochka kontakty" id="kontakty">
-  <div class="shapka-sekcii">
-    <h2 class="zag-sekcii">Как записаться</h2>
-    <div class="ritm" style="margin:0"><i></i><i></i><i></i></div>
-  </div>
-  <div class="geroy-setka" style="align-items:center">
-    <div class="kadr kadr-krug" style="max-width:360px"><img src="foto/work-shoulders-two.jpg" alt="Работа с плечами"></div>
-    <div class="kontakty-setka" style="grid-template-columns:1fr;margin-top:0;gap:28px">
-      <div>
-        <h4>Где</h4>
-        <p>Анталья, Коньяалты, очно</p>
-        <p>Москва, очно, до 10 ноября</p>
-        <p>Онлайн, весь мир</p>
-      </div>
-      <div>
-        <h4>Когда</h4>
-        <p>Понедельник, среда, четверг, воскресенье</p>
-        <p>11:00, 12:30, 17:30 очно и онлайн</p>
-        <p>19:00 только онлайн</p>
-      </div>
-      <div class="blok-svyaz">
-        <h4>Связаться</h4>
-        <p style="font-family:'Prata',serif;font-size:22px;color:var(--water-900);margin-bottom:18px">+7 925 889 88 12</p>
-        <a class="knopka osn" href="https://wa.me/79258898812">Написать в WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <footer class="obolochka">
   <div class="podval">
     <span>ИП Оздемир Юлия Владимировна · ИНН 771983333009</span>
-    <span>Юлия ОздеМир · остеопатия · биодинамика</span>
+    <span><a href="https://wa.me/79258898812">WhatsApp +7 925 889 88 12</a> · Юлия ОздеМир · остеопатия · биодинамика</span>
   </div>
 </footer>
 
