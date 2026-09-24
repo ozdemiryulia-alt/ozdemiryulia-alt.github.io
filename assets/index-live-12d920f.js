@@ -413,3 +413,56 @@ React keys must be passed directly to JSX without using spread:
 
 /* yulia-root-shortcuts */
 (()=>{let n=0;const add=()=>{const nav=document.querySelector('.nav-side');if(!nav){if(n++<120)requestAnimationFrame(add);return;}if(!nav.querySelector('.nav-language')){const en=document.createElement('a');en.href='/en/';en.className='nav-language';en.textContent='EN';en.setAttribute('aria-label','English version');nav.appendChild(en);}if(!nav.querySelector('.nav-blog')){const blog=document.createElement('a');blog.href='/blog/';blog.className='nav-blog';blog.textContent='Блог';blog.setAttribute('aria-label','Блог');nav.appendChild(blog);}};add();})();
+/* yulia-location-switch */
+(()=>{
+  const locations={
+    antalya:{label:"Анталья",note:"Основное место работы · также доступно онлайн"},
+    moscow:{label:"Москва",note:"Очные даты во время поездок · также доступно онлайн"},
+    remote:{label:"Онлайн",note:"Дистанционные сеансы из любой точки"}
+  };
+  let saved="antalya";
+  try { saved=localStorage.getItem("yulia-location")||"antalya"; } catch (error) {}
+  const state={value:locations[saved]?saved:"antalya"};
+  const setLocation=(value)=>{
+    state.value=value;
+    try { localStorage.setItem("yulia-location",value); } catch (error) {}
+    document.querySelectorAll(".oz-location-option").forEach((button)=>{
+      button.classList.toggle("is-active",button.dataset.location===value);
+    });
+    const note=document.querySelector(".oz-location-note");
+    if(note) note.textContent=locations[value].note;
+  };
+  const mount=()=>{
+    if(document.querySelector(".oz-location-switch")) return true;
+    const booking=document.querySelector("#booking");
+    const step=booking&&booking.querySelector(".form-step");
+    if(!booking||!step) return false;
+    const box=document.createElement("div");
+    box.className="oz-location-switch";
+    box.innerHTML='<span class="oz-location-switch-title">Где вам удобно?</span><div class="oz-location-options"><button type="button" class="oz-location-option" data-location="antalya">Анталья</button><button type="button" class="oz-location-option" data-location="moscow">Москва</button><button type="button" class="oz-location-option" data-location="remote">Онлайн</button></div><p class="oz-location-note"></p>';
+    box.querySelectorAll(".oz-location-option").forEach((button)=>{
+      button.addEventListener("click",()=>setLocation(button.dataset.location));
+    });
+    step.parentNode.insertBefore(box,step);
+    setLocation(state.value);
+    return true;
+  };
+  let tries=0;
+  const wait=()=>{ if(!mount() && tries++<120) requestAnimationFrame(wait); };
+  wait();
+  const originalOpen=window.open.bind(window);
+  window.open=(url,...args)=>{
+    try {
+      const parsed=new URL(String(url),window.location.href);
+      if((parsed.hostname==="wa.me"||parsed.hostname==="t.me")&&parsed.searchParams.has("text")){
+        let text=parsed.searchParams.get("text")||"";
+        if(!text.includes("Локация:")){
+          text += "\nЛокация: "+locations[state.value].label;
+          parsed.searchParams.set("text",text);
+        }
+        return originalOpen(parsed.toString(),...args);
+      }
+    } catch (error) {}
+    return originalOpen(url,...args);
+  };
+})();
