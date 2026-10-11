@@ -419,7 +419,16 @@ React keys must be passed directly to JSX without using spread:
   const cutoff=Date.UTC(year,now.getMonth(),now.getDate());
   return Date.UTC(year,monthNumber-1,Number(match[2]))>=cutoff;
 }
-Rr=Rr.filter(item=>isUpcomingKey(item.id));
+function scheduleKeyOrder(key){
+  const months={jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+  const match=String(key??'').trim().match(/^([a-z]{3})-(\d{1,2})/i);
+  if(!match) return 9999;
+  return (months[match[1].toLowerCase()]||99)*100+Number(match[2]);
+}
+function sortScheduleDays(list){
+  return list.slice().sort((a,b)=>scheduleKeyOrder(a.id)-scheduleKeyOrder(b.id));
+}
+Rr=sortScheduleDays(Rr.filter(item=>isUpcomingKey(item.id)));
 function mergeScheduleRows(rows){
   const monthNames={jan:'january',feb:'february',mar:'march',apr:'april',may:'may',jun:'june',jul:'july',aug:'august',sep:'september',oct:'october',nov:'november',dec:'december'};
   const isPublicKey=isUpcomingKey;
@@ -461,7 +470,7 @@ function mergeScheduleRows(rows){
       if(!item.modes.length) item.modes=['inperson','remote'];
     }
   }
-  return Array.from(byId.values());
+  return sortScheduleDays(Array.from(byId.values()));
 }
 function Jc(){
   const labels={september:'Сентябрь',october:'Октябрь',november:'Ноябрь',december:'Декабрь',january:'Январь',february:'Февраль',march:'Март',april:'Апрель',may:'Май',june:'Июнь',july:'Июль',august:'Август'};
